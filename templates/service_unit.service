@@ -1,0 +1,16 @@
+[Unit]
+Description={service_description}
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart={path_to_your_executable}
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+# ls -al /lib/systemd/system/runlevel*
+[Install]
+WantedBy=graphical.target
